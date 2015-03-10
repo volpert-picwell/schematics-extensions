@@ -2,7 +2,7 @@ import unittest
 
 from schematics.types import IntType
 
-from immutable_model import ImmutableModel, ImmutabilityError
+from ..immutable_model import ImmutableModel, ImmutabilityError
 
 
 class ModelForTesting(ImmutableModel):

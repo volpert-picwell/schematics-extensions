@@ -3,7 +3,7 @@ import unittest
 from schematics.exceptions import ValidationError
 from schematics.models import Model
 
-from numeric_string_type import NumericStringType
+from ..numeric_string_type import NumericStringType
 
 
 class ModelForTesting(Model):
