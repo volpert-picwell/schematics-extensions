@@ -1,7 +1,7 @@
 from schematics.types import (
     IntType, StringType, FloatType, BooleanType, LongType)
 
-from .mockable_list_type import MockableListType as ListType
-from .immutable_model import ImmutableModel as Model
-from .mockable_model_type import MockableModelType as ModelType
+from .mockable_list_type import MockableListType
+from .immutable_model import ImmutableModel
+from .mockable_model_type import MockableModelType
 from .numeric_string_type import NumericStringType
