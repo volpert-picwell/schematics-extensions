@@ -4,5 +4,5 @@ from random import randint
 
 class MockableListType(SchematicsListType):
     def _mock(self, context=None):
-        return [self.model_class.get_mock_object()
+        return [self.field._mock()
                 for _ in range(randint(1, 3))]
