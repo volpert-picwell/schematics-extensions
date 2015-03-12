@@ -2,6 +2,11 @@ from schematics.models import Model as SchematicsModel
 
 
 class ImmutableModel(SchematicsModel):
+    """Model that cannot be changed once it is initialized.
+
+    Any change will raise an ImmutabilityError.
+    """
+
     def __init__(self, *args, **kwargs):
         self._initialized = False
         super(ImmutableModel, self).__init__(*args, **kwargs)
@@ -15,6 +20,8 @@ class ImmutableModel(SchematicsModel):
 
 
 class ImmutabilityError(AttributeError):
+    """Raised by an ImmutableModel if it is changed."""
+
     def __init__(self, model, attr_name, attr_value):
         message_format = "Could not assign value %r to %r on %r" + \
             "because the object is immutable"
