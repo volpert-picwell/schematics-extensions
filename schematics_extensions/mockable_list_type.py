@@ -3,9 +3,9 @@ from random import randint
 
 
 class MockableListType(SchematicsListType):
-    """Version of ModelListType that will generate a list of mocks.
+    """Version of ListType that will generate a list of mocks.
 
-    By default, in Schematics, if you have a field of type `ModelListType`,
+    By default, in Schematics, if you have a field of type `ListType`,
     when you call `get_mock_object()`, that field will be `None`, instead of a
     list. E.g.:
 
