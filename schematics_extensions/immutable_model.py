@@ -1,4 +1,4 @@
-from schematics.models import Model as SchematicsModel
+from .models import Model as SchematicsModel
 
 
 class ImmutableModel(SchematicsModel):

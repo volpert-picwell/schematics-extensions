@@ -1,8 +1,8 @@
 import pytest
 
-from schematics.types import StringType
-from schematics.types.compound import ModelType, ListType
-from schematics.models import Model
+from ..types import StringType
+from ..types.compound import ModelType, ListType
+from ..models import Model
 
 from ..mockable_dict_type import MockableDictType
 from ..mockable_model_type import MockableModelType
@@ -13,11 +13,13 @@ class ExampleSubmodel(Model):
 
 
 class ExampleModel(Model):
-    submodels = MockableDictType(MockableModelType(ExampleSubmodel), required=True)
+    submodels = MockableDictType(MockableModelType(ExampleSubmodel),
+                                 required=True)
 
 
 class ExampleModelWithStrings(Model):
-    strings = MockableDictType(StringType(min_length=10, max_length=10), required=True)
+    strings = MockableDictType(StringType(min_length=10, max_length=10),
+                               required=True)
 
 
 def test_mockable_dict_type_attribute_generates_a_dict_of_mocked_models():

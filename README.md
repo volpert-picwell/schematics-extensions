@@ -48,3 +48,8 @@ A subclass of SchematicsModel which raises exceptions if you try to assign a new
 # NumericString Type
 
 A new type which is only valid if the value is a string of decimal digits.
+
+# Changelog
+
+## 0.0.3
+  - Add `get_null_object` to return null-types.

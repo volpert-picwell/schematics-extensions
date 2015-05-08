@@ -3,7 +3,7 @@ import re
 import string
 
 from schematics.exceptions import ValidationError
-from schematics.types import StringType
+from .types import StringType
 
 
 class NumericStringType(StringType):

@@ -1,8 +1,8 @@
 import pytest
 
-from schematics.types import StringType
-from schematics.types.compound import ModelType, ListType
-from schematics.models import Model
+from ..types import StringType
+from ..types.compound import ModelType, ListType
+from ..models import Model
 
 from ..mockable_list_type import MockableListType
 from ..mockable_model_type import MockableModelType
@@ -13,11 +13,13 @@ class ExampleSubmodel(Model):
 
 
 class ExampleModel(Model):
-    submodels = MockableListType(MockableModelType(ExampleSubmodel), required=True)
+    submodels = MockableListType(MockableModelType(ExampleSubmodel),
+                                 required=True)
 
 
 class ExampleModelWithStrings(Model):
-    strings = MockableListType(StringType(min_length=10, max_length=10), required=True)
+    strings = MockableListType(StringType(min_length=10, max_length=10),
+                               required=True)
 
 
 def test_mockable_list_type_attribute_generates_a_list_of_mocked_models():
