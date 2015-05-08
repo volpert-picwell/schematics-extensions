@@ -1,4 +1,4 @@
-from schematics.types.compound import ListType as SchematicsListType
+from .types.compound import ListType as SchematicsListType
 from random import randint
 
 

@@ -1,4 +1,4 @@
-from schematics.types.compound import ModelType as SchematicsModelType
+from .types.compound import ModelType as SchematicsModelType
 
 
 class MockableModelType(SchematicsModelType):

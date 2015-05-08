@@ -1,6 +1,6 @@
 import unittest
 
-from schematics.types import IntType
+from ..types import IntType
 
 from ..immutable_model import ImmutableModel, ImmutabilityError
 

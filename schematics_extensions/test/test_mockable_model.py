@@ -1,7 +1,7 @@
 import pytest
 
-from schematics.types import StringType
-from schematics.models import Model
+from ..types import StringType
+from ..models import Model
 
 from ..mockable_model_type import MockableModelType
 
