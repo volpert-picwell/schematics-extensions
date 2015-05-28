@@ -13,3 +13,6 @@ class Model(Model):
                 values[name] = field.null()
         values.update(overrides)
         return cls(values)
+
+    def __repr__(self):
+        return "{}({!r})".format(self.__class__.__name__, self._data)

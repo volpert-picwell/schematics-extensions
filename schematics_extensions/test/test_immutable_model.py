@@ -32,4 +32,4 @@ class ImmutabilityErrorTest(unittest.TestCase):
 
         self.assertRegexpMatches(error.message, r"'the_value'")
         self.assertRegexpMatches(error.message, r"'the_key'")
-        self.assertRegexpMatches(error.message, r"<ModelForTesting")
+        self.assertRegexpMatches(error.message, r"ModelForTesting")
