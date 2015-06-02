@@ -4,6 +4,10 @@ from schematics.models import Model
 class Model(Model):
 
     @classmethod
+    def mock(cls, *args, **kwargs):
+        return cls.get_mock_object(overrides=kwargs)
+
+    @classmethod
     def get_null_object(cls, overrides=None):
         if overrides is None:
             overrides = {}
