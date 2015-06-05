@@ -89,3 +89,11 @@ class NumericStringTypeTest(unittest.TestCase):
             numeric_string = NumericStringType(required=True, length=5)
 
         model = ModelForTesting({'numeric_string': 12345}).validate()
+
+    def test_doesnt_allow_spaces(self):
+        class ModelForTesting(Model):
+            numeric_string = NumericStringType(required=True, length=5)
+
+        invalid_model = ModelForTesting({'numeric_string': '    5'})
+        self.assertRaises(ValidationError, invalid_model.validate)
+
