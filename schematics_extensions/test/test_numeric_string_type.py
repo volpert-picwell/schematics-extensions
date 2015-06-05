@@ -83,3 +83,9 @@ class NumericStringTypeTest(unittest.TestCase):
             numeric_string = NumericStringType(required=True)
 
         ModelForTesting.get_mock_object().validate()
+
+    def test_non_string_doesnt_break_validation(self):
+        class ModelForTesting(Model):
+            numeric_string = NumericStringType(required=True, length=5)
+
+        model = ModelForTesting({'numeric_string': 12345}).validate()

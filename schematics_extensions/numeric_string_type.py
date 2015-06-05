@@ -1,5 +1,4 @@
 from random import choice, randint
-import re
 import string
 
 from schematics.exceptions import ValidationError
@@ -18,9 +17,10 @@ class NumericStringType(StringType):
             my_field = NumericStringType(length=5)
     """
 
-    MESSAGES = {'length': u'Value is not a numeric string of length %d'}
-
-    REGEX_PATTERN = r'^\d{%d}$'
+    MESSAGES = {
+        'length': u'Value is not a numeric string of length %d',
+        'digits': u'Value contains characters other than numeric digits',
+    }
 
     def __init__(self, **kwargs):
         self.length = kwargs.pop('length', None)
@@ -32,7 +32,12 @@ class NumericStringType(StringType):
                                                          else 20)
         return ''.join(choice(string.digits) for _ in range(length))
 
+    def validate_numeric(self, value):
+        try:
+            int(value)
+        except:
+            raise ValidationError(self.messages['digits'])
+
     def validate_length(self, value):
-        if self.length and len(value) == self.length:
-            if not re.compile(self.REGEX_PATTERN % self.length).match(value):
-                raise ValidationError(self.messages['length'] % self.length)
+        if self.length and len(value) != self.length:
+            raise ValidationError(self.messages['length'] % self.length)
