@@ -96,4 +96,3 @@ class NumericStringTypeTest(unittest.TestCase):
 
         invalid_model = ModelForTesting({'numeric_string': '    5'})
         self.assertRaises(ValidationError, invalid_model.validate)
-

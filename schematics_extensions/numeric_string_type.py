@@ -1,4 +1,5 @@
 from random import choice, randint
+import re
 import string
 
 from schematics.exceptions import ValidationError
@@ -33,9 +34,7 @@ class NumericStringType(StringType):
         return ''.join(choice(string.digits) for _ in range(length))
 
     def validate_numeric(self, value):
-        try:
-            int(value)
-        except:
+        if re.compile(r'\D').match(value):
             raise ValidationError(self.messages['digits'])
 
     def validate_length(self, value):
