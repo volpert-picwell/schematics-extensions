@@ -1,4 +1,4 @@
-import random
+from random import choice, randint
 import re
 import string
 
@@ -19,21 +19,24 @@ class NumericStringType(StringType):
     """
 
     MESSAGES = {
-        'length': u'Value is not a numeric string of length %d'
+        'length': u'Value is not a numeric string of length %d',
+        'digits': u'Value contains characters other than numeric digits',
     }
 
-    REGEX_PATTERN = r'^\d{%d}$'
-
     def __init__(self, **kwargs):
-        length = kwargs.pop('length')
+        self.length = kwargs.pop('length', None)
         super(NumericStringType, self).__init__(**kwargs)
-        self.length = length
-        self.regex = re.compile(self.REGEX_PATTERN % self.length)
 
     def _mock(self, context=None):
-        return ''.join(
-            random.choice(string.digits) for _ in range(self.length))
+        length = self.length if self.length else randint(1, self.max_length
+                                                         if self.max_length
+                                                         else 20)
+        return ''.join(choice(string.digits) for _ in range(length))
 
-    def validate_regex(self, value):
-        if self.regex is not None and self.regex.match(value) is None:
+    def validate_numeric(self, value):
+        if re.compile(r'\D').match(value):
+            raise ValidationError(self.messages['digits'])
+
+    def validate_length(self, value):
+        if self.length and len(value) != self.length:
             raise ValidationError(self.messages['length'] % self.length)
