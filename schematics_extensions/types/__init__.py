@@ -1,8 +1,20 @@
-from schematics.types import (
-    IntType, StringType, FloatType, BooleanType, LongType)
+from schematics.types import (IntType, StringType, FloatType, BooleanType,
+                              NumberType, LongType)
 
 
 class IntType(IntType):
+
+    @classmethod
+    def null(self):
+        return None
+
+
+class CurrencyType(NumberType):
+
+    def __init__(self, *args, **kwargs):
+        super(CurrencyType, self).__init__(
+                number_class=lambda x: round(x, 2),
+                number_type='CurrencyType', *args, **kwargs)
 
     @classmethod
     def null(self):
