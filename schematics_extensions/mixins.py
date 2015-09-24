@@ -10,7 +10,7 @@ class DebugMixin(Model):
     displayed.
     """
 
-    debug = DictType(BaseType)
+    debug = DictType(BaseType, default={})
 
     class Options:
         roles = {
