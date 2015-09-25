@@ -5,7 +5,7 @@ from . import MockableDictType as DictType
 from .models import Model
 
 
-class DebugMixin(Model):
+class DebuggableModel(Model):
     """Model that has a 'debug' field and a 'debug' role which allows it to be
     displayed.
     """
