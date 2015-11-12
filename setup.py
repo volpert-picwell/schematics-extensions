@@ -8,7 +8,7 @@ requirements = [
 ]
 
 setup(name='schematics-extensions',
-      version='0.0.3',
+      version='0.0.4',
       description='Extensions for the Schematics library',
       author='Picwell',
       author_email='dev@picwell.com',
